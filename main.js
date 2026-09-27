@@ -1,13 +1,14 @@
 const express = require("express");
-const ConnectToMongo = require("../server/db/connectToMongo");
+
 const authRouter = require("./auth/auth.router");
 const cors = require("cors");
 const usersRouter = require("./routes/users.router");
+const connectToMongo = require("./db/connectToMongo");
 const app = express();
 app.use(cors());
 app.use(express.json());
 require("dotenv").config();
-ConnectToMongo();
+connectToMongo();
 
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
